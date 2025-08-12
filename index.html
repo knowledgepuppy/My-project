@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI项目集合可视化</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>AI项目集合可视化系统</h1>
+            <p>探索多个AI项目的结构、功能和数据流</p>
+        </header>
+
+        <nav class="navigation">
+            <button class="nav-btn active" data-view="overview">项目概览</button>
+            <button class="nav-btn" data-view="structure">项目结构</button>
+            <button class="nav-btn" data-view="dataflow">数据流图</button>
+            <button class="nav-btn" data-view="performance">性能分析</button>
+            <button class="nav-btn" data-view="timeline">开发时间线</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- 项目概览 -->
+            <div id="overview" class="view active">
+                <div class="project-grid">
+                    <div class="project-card" data-project="house-price">
+                        <div class="card-header">
+                            <h3>房价预测系统</h3>
+                            <span class="tech-tag">机器学习</span>
+                        </div>
+                        <div class="card-content">
+                            <p>基于多种特征的房价预测模型，支持数据分析和可视化</p>
+                            <div class="stats">
+                                <span>文件数: 8</span>
+                                <span>技术栈: Python, Flask, ML</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="typhoon">
+                        <div class="card-header">
+                            <h3>台风预测模型</h3>
+                            <span class="tech-tag">深度学习</span>
+                        </div>
+                        <div class="card-content">
+                            <p>基于历史数据的台风路径和强度预测系统</p>
+                            <div class="stats">
+                                <span>文件数: 2</span>
+                                <span>技术栈: Python, TensorFlow</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="underwater">
+                        <div class="card-header">
+                            <h3>水下图像增强</h3>
+                            <span class="tech-tag">计算机视觉</span>
+                        </div>
+                        <div class="card-content">
+                            <p>使用GAN网络进行水下图像质量增强和修复</p>
+                            <div class="stats">
+                                <span>文件数: 12</span>
+                                <span>技术栈: PyTorch, GAN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="realtime-enhancement">
+                        <div class="card-header">
+                            <h3>实时图像增强</h3>
+                            <span class="tech-tag">实时处理</span>
+                        </div>
+                        <div class="card-content">
+                            <p>实时摄像头图像增强系统，支持多种滤镜和效果</p>
+                            <div class="stats">
+                                <span>文件数: 3</span>
+                                <span>技术栈: OpenCV, PyTorch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="yolo">
+                        <div class="card-header">
+                            <h3>YOLO目标检测</h3>
+                            <span class="tech-tag">目标检测</span>
+                        </div>
+                        <div class="card-content">
+                            <p>基于YOLOv8的实时目标检测系统，支持多类别识别</p>
+                            <div class="stats">
+                                <span>文件数: 1</span>
+                                <span>技术栈: YOLO, OpenCV</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 项目结构 -->
+            <div id="structure" class="view">
+                <div class="structure-container">
+                    <div class="project-selector">
+                        <select id="projectSelect">
+                            <option value="house-price">房价预测系统</option>
+                            <option value="underwater">水下图像增强</option>
+                            <option value="realtime-enhancement">实时图像增强</option>
+                            <option value="yolo">YOLO目标检测</option>
+                        </select>
+                    </div>
+                    <div id="tree-visualization"></div>
+                </div>
+            </div>
+
+            <!-- 数据流图 -->
+            <div id="dataflow" class="view">
+                <div class="dataflow-container">
+                    <div class="flow-selector">
+                        <button class="flow-btn active" data-flow="house-price">房价预测流程</button>
+                        <button class="flow-btn" data-flow="underwater">图像增强流程</button>
+                        <button class="flow-btn" data-flow="yolo">目标检测流程</button>
+                    </div>
+                    <div id="flow-diagram"></div>
+                </div>
+            </div>
+
+            <!-- 性能分析 -->
+            <div id="performance" class="view">
+                <div class="performance-container">
+                    <div class="chart-grid">
+                        <div class="chart-item">
+                            <h3>项目复杂度分析</h3>
+                            <canvas id="complexityChart"></canvas>
+                        </div>
+                        <div class="chart-item">
+                            <h3>技术栈分布</h3>
+                            <canvas id="techStackChart"></canvas>
+                        </div>
+                        <div class="chart-item">
+                            <h3>文件类型分布</h3>
+                            <canvas id="fileTypeChart"></canvas>
+                        </div>
+                        <div class="chart-item">
+                            <h3>项目规模对比</h3>
+                            <canvas id="projectSizeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 开发时间线 -->
+            <div id="timeline" class="view">
+                <div class="timeline-container">
+                    <div id="timeline-visualization"></div>
+                </div>
+            </div>
+        </main>
+
+        <div class="project-details-modal" id="projectModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
